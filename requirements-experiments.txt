@@ -1,0 +1,7 @@
+# Optional dependencies for reproducing model-based experiments.
+# The core SkillRobust CLI uses only the Python standard library.
+torch>=2.3
+transformers>=4.45
+accelerate>=0.33
+sentencepiece>=0.2
+tqdm>=4.66

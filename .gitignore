@@ -1,0 +1,48 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage*
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local configuration
+.env
+*.local
+
+# Local models and checkpoints
+models/
+LLM/
+
+# Generated benchmark artifacts
+benchmark/data/
+benchmark/results/
+benchmark/raw_sources/
+benchmark/plans/
+main_table_large_server_bundle/
+open_release/
+
+# Local logs and transient exports
+server/logs/
+server/*.txt
+outputs/
+*.log
+*.tmp
+*.bak
+*.zip
+
+# Notebook / editor state
+.ipynb_checkpoints/
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

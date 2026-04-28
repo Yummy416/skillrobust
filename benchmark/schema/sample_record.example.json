@@ -1,0 +1,46 @@
+{
+  "sample_id": "clean_openai_0001",
+  "split": "train",
+  "subset": "clean",
+  "source": {
+    "source_id": "SRC_CLEAN_001",
+    "source_kind": "official_repo",
+    "url": "https://github.com/openai/skills",
+    "repo_name": "openai/skills",
+    "repo_commit": "82d2c5b44ac234ec0f204f647562a4349d90ef43",
+    "local_path": "benchmark/raw_sources/openai_skills"
+  },
+  "skill": {
+    "root_path": "skills/example_skill",
+    "frontmatter": {
+      "name": "example-skill",
+      "description": "Example skill package."
+    },
+    "files": [
+      {
+        "path": "skills/example_skill/SKILL.md",
+        "role": "skill_md",
+        "content": "# Example skill\\n\\nThis is a placeholder example."
+      }
+    ],
+    "repo_context": {
+      "readme": "Repository-level summary text.",
+      "metadata": {
+        "license": "unknown"
+      }
+    }
+  },
+  "labels": {
+    "package_label": "benign",
+    "risk_tags": []
+  },
+  "evidence": [],
+  "variant": null,
+  "annotation": {
+    "status": "draft",
+    "annotators": [
+      "researcher_1"
+    ],
+    "notes": "Placeholder example record for schema validation."
+  }
+}

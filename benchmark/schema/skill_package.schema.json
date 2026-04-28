@@ -1,0 +1,280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/skill-benchmark/skill_package.schema.json",
+  "title": "Skill Benchmark Record",
+  "type": "object",
+  "required": [
+    "sample_id",
+    "split",
+    "subset",
+    "source",
+    "skill",
+    "labels",
+    "annotation"
+  ],
+  "properties": {
+    "sample_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]+$"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "train",
+        "validation",
+        "test"
+      ]
+    },
+    "subset": {
+      "type": "string",
+      "enum": [
+        "clean",
+        "risk",
+        "attack_rewrite"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "source_id",
+        "source_kind",
+        "url"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string"
+        },
+        "source_kind": {
+          "type": "string",
+          "enum": [
+            "official_repo",
+            "community_repo",
+            "paper_reconstructed",
+            "paper_release_or_reconstruct",
+            "manual_case"
+          ]
+        },
+        "url": {
+          "type": "string"
+        },
+        "repo_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "repo_commit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "local_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "skill": {
+      "type": "object",
+      "required": [
+        "root_path",
+        "files"
+      ],
+      "properties": {
+        "root_path": {
+          "type": "string"
+        },
+        "frontmatter": {
+          "type": "object"
+        },
+        "files": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "path",
+              "role",
+              "content"
+            ],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "skill_md",
+                  "reference",
+                  "script",
+                  "asset",
+                  "repo_context"
+                ]
+              },
+              "content": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "repo_context": {
+          "type": "object",
+          "properties": {
+            "readme": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "metadata": {
+              "type": "object"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "labels": {
+      "type": "object",
+      "required": [
+        "package_label",
+        "risk_tags"
+      ],
+      "properties": {
+        "package_label": {
+          "type": "string",
+          "enum": [
+            "benign",
+            "suspicious",
+            "malicious"
+          ]
+        },
+        "risk_tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "T1",
+              "T2",
+              "T3",
+              "T4",
+              "T5",
+              "T6",
+              "T7",
+              "T8"
+            ]
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "tag",
+          "rationale"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "span_text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tag": {
+            "type": "string",
+            "enum": [
+              "T1",
+              "T2",
+              "T3",
+              "T4",
+              "T5",
+              "T6",
+              "T7",
+              "T8"
+            ]
+          },
+          "rationale": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "variant": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "variant_of": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "attack_family": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rewrite_strength": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "light",
+            "medium",
+            "strong",
+            null
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "annotation": {
+      "type": "object",
+      "required": [
+        "status",
+        "annotators"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "verified",
+            "adjudicated",
+            "needs_adjudication"
+          ]
+        },
+        "annotators": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
