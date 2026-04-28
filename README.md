@@ -1,15 +1,37 @@
 # SkillRobust
 
-SkillRobust is a package-level auditing toolkit for untrusted Agent Skill packages. It implements structured evidence extraction, optional semantic verification with a replaceable LLM verifier, and robust aggregation for `benign`, `suspicious`, and `malicious` decisions.
+Code release for **SkillRobust**, a package-level robust auditing framework for untrusted Agent Skill packages.
 
-This repository snapshot is code-only. Benchmark data is not included here and should be distributed separately as a dataset release.
+Modern agent systems increasingly load reusable "skills" before execution. A skill is not just a prompt: it can contain `SKILL.md`, scripts, reference documents, templates, and repository context. This makes pre-load safety auditing a package-level decision problem. A flat guardrail can miss cross-file evidence, or collapse malicious behavior into a weaker suspicious label after semantic rewrites.
 
-## Repository Layout
+SkillRobust studies this problem and provides a reusable implementation of a staged auditing pipeline for classifying skill packages as `benign`, `suspicious`, or `malicious`.
+
+## Paper Overview
+
+The paper introduces:
+
+- **Skill package auditing** as a cross-file, pre-load security review problem for agent skills.
+- **SkillGuard-Bench**, a benchmark of benign, suspicious, malicious, and rewrite-stressed skill packages.
+- **SkillGuard-Robust**, an error-decomposition induced auditing architecture.
+- A diagnostic finding that strong single-shot judges often detect risk but fail to preserve the operational distinction between suspicious and malicious packages.
+
+The method is designed around four recurring failure modes:
+
+- Cross-file evidence dispersion, where the decisive risk chain is split across `SKILL.md`, references, scripts, and repository context.
+- Local semantic uncertainty, where a single span is ambiguous without nearby package evidence.
+- Chain dominance ambiguity, where suspicious and malicious cues conflict.
+- Rewrite instability, where semantic-preserving rewrites change the predicted label.
+
+SkillRobust addresses these issues with structured evidence extraction, optional semantic verification, conflict-aware aggregation, and robust final consolidation.
+
+## What This Repository Contains
+
+This repository is the **code-only release**. Benchmark data is distributed separately as a dataset release.
 
 ```text
 .
 |-- src/skillrobust/        # reusable auditing package and CLI
-|-- docs/                   # public usage guide
+|-- docs/                   # usage guide
 |-- tests/                  # lightweight local tests
 |-- server/                 # optional vLLM serving helpers
 |-- benchmark/schema/       # JSON schemas for package records and evidence bundles
@@ -26,13 +48,13 @@ This repository snapshot is code-only. Benchmark data is not included here and s
 python -m pip install -e .
 ```
 
-The core CLI uses only the Python standard library. Install optional dependencies only for model-based reproduction experiments:
+The core CLI uses only the Python standard library. Install optional experiment dependencies only if you want to run model-serving or reproduction workflows:
 
 ```bash
 python -m pip install -r requirements-experiments.txt
 ```
 
-## Use the Auditor
+## Quick Start
 
 Audit one materialized skill package:
 
@@ -60,7 +82,7 @@ skillrobust audit-jsonl \
 
 If the endpoint requires authentication, set `SKILLROBUST_API_KEY` or pass `--api-key`.
 
-## Data Format
+## Input Format
 
 For JSONL evaluation, each line should be a package record with:
 
@@ -69,12 +91,34 @@ For JSONL evaluation, each line should be a package record with:
 - `skill.files`: list of package files, where each item has `path`, `role`, and `content`.
 - optional `labels`: ground-truth labels for evaluation.
 
-The separate public dataset release follows this format and also includes materialized packages under `data/packages/`.
+The separate dataset release follows this format and also includes materialized packages under `data/packages/`.
 
-## Paper Reproduction
+## Output Format
 
-The reusable method is in `src/skillrobust/`. Full paper-specific data construction scripts and generated artifacts are intentionally not included in this code-only upload folder. Keep those internal scripts outside the public GitHub repository, or publish them later as a separate reproduction package if needed.
+The auditor emits one JSON object per package:
 
-## Safety
+- `prediction`: final `benign`, `suspicious`, or `malicious` decision.
+- `confidence`: confidence score from the robust decision layer.
+- `reason`: short explanation for the final decision.
+- `structured_evidence`: deterministic evidence signals extracted from package files.
+- `semantic_verification`: optional verifier result when an endpoint is configured.
 
-Risk samples used with this code may contain simulated or reconstructed unsafe patterns. Evaluate them only in isolated workflows. Do not install or execute untrusted benchmark packages as operational skills.
+## Safety Notice
+
+Risk and rewrite samples used with this project may contain simulated or reconstructed unsafe patterns. They are intended for isolated security evaluation only. Do not install or execute untrusted benchmark packages as operational skills.
+
+## Citation
+
+If you use this code, benchmark, or paper in your research, please cite:
+
+```bibtex
+@article{li2026skillrobust,
+  title        = {SkillRobust: Robust Pre-Load Auditing of Untrusted Agent Skill Packages},
+  author       = {Li, Lijia and Others},
+  journal      = {arXiv preprint},
+  year         = {2026},
+  note         = {arXiv identifier pending}
+}
+```
+
+The arXiv identifier will be updated after the paper passes moderation.
