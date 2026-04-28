@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="470" viewBox="0 0 1120 470" role="img" aria-label="SkillRobust result overview">
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f3f6f8"/>
+    </linearGradient>
+    <filter id="shadow" x="-12%" y="-16%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#17202a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .title{font-family:Georgia,serif;font-size:30px;font-weight:700;fill:#18202a}
+      .subtitle{font-family:Arial,sans-serif;font-size:15px;fill:#586675}
+      .axis{stroke:#c8d0d8;stroke-width:1}
+      .tick{font-family:Arial,sans-serif;font-size:12px;fill:#6b7682}
+      .label{font-family:Arial,sans-serif;font-size:14px;font-weight:700;fill:#34404c}
+      .value{font-family:Arial,sans-serif;font-size:13px;font-weight:700;fill:#26313b}
+      .legend{font-family:Arial,sans-serif;font-size:14px;fill:#33404c}
+      .note{font-family:Arial,sans-serif;font-size:12px;fill:#6c7782}
+    </style>
+  </defs>
+  <rect width="1120" height="470" rx="24" fill="#edf3f2"/>
+  <g filter="url(#shadow)">
+    <rect x="36" y="32" width="1048" height="406" rx="22" fill="url(#panel)"/>
+  </g>
+  <text x="70" y="78" class="title">Large-suite result snapshot</text>
+  <text x="72" y="104" class="subtitle">Overall Exact (%) across five evaluation views. Higher is better.</text>
+
+  <g transform="translate(94,142)">
+    <line x1="0" y1="250" x2="900" y2="250" class="axis"/>
+    <line x1="0" y1="200" x2="900" y2="200" class="axis"/>
+    <line x1="0" y1="150" x2="900" y2="150" class="axis"/>
+    <line x1="0" y1="100" x2="900" y2="100" class="axis"/>
+    <line x1="0" y1="50" x2="900" y2="50" class="axis"/>
+    <text x="-36" y="254" class="tick">50</text>
+    <text x="-36" y="204" class="tick">60</text>
+    <text x="-36" y="154" class="tick">70</text>
+    <text x="-36" y="104" class="tick">80</text>
+    <text x="-36" y="54" class="tick">90</text>
+    <text x="-44" y="8" class="tick">100</text>
+
+    <g>
+      <rect x="38" y="52.35" width="42" height="197.65" rx="7" fill="#9aa7b2"/>
+      <rect x="86" y="3.7" width="42" height="246.3" rx="7" fill="#1f9d7a"/>
+      <text x="38" y="38" class="value">89.53</text>
+      <text x="84" y="-10" class="value">99.26</text>
+      <text x="44" y="282" class="label">Main</text>
+    </g>
+
+    <g>
+      <rect x="208" y="109.15" width="42" height="140.85" rx="7" fill="#9aa7b2"/>
+      <rect x="256" y="13.5" width="42" height="236.5" rx="7" fill="#1f9d7a"/>
+      <text x="206" y="95" class="value">78.17</text>
+      <text x="254" y="0" class="value">97.30</text>
+      <text x="210" y="282" class="label">All-HO</text>
+    </g>
+
+    <g>
+      <rect x="378" y="102.65" width="42" height="147.35" rx="7" fill="#9aa7b2"/>
+      <rect x="426" y="7.45" width="42" height="242.55" rx="7" fill="#1f9d7a"/>
+      <text x="376" y="88" class="value">79.47</text>
+      <text x="424" y="-6" class="value">98.51</text>
+      <text x="374" y="282" class="label">Int.-stress</text>
+    </g>
+
+    <g>
+      <rect x="548" y="72.25" width="42" height="177.75" rx="7" fill="#9aa7b2"/>
+      <rect x="596" y="4.15" width="42" height="245.85" rx="7" fill="#1f9d7a"/>
+      <text x="546" y="58" class="value">85.55</text>
+      <text x="594" y="-9" class="value">99.17</text>
+      <text x="542" y="282" class="label">Boundary</text>
+    </g>
+
+    <g>
+      <rect x="718" y="53.6" width="42" height="196.4" rx="7" fill="#9aa7b2"/>
+      <rect x="766" y="1.7" width="42" height="248.3" rx="7" fill="#1f9d7a"/>
+      <text x="716" y="39" class="value">89.28</text>
+      <text x="764" y="-12" class="value">99.66</text>
+      <text x="720" y="282" class="label">Ext.-eco</text>
+    </g>
+  </g>
+
+  <rect x="788" y="72" width="18" height="18" rx="4" fill="#9aa7b2"/>
+  <text x="814" y="86" class="legend">Qwen2.5-14B full-package</text>
+  <rect x="788" y="100" width="18" height="18" rx="4" fill="#1f9d7a"/>
+  <text x="814" y="114" class="legend">SkillGuard-Robust</text>
+  <text x="72" y="424" class="note">Values are from the large evaluation suite reported in the paper draft; benchmark data is released separately from this code repository.</text>
+</svg>

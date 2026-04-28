@@ -6,6 +6,10 @@ Modern agent systems increasingly load reusable "skills" before execution. A ski
 
 SkillRobust studies this problem and provides a reusable implementation of a staged auditing pipeline for classifying skill packages as `benign`, `suspicious`, or `malicious`.
 
+<p align="center">
+  <img src="docs/assets/skillrobust_pipeline.svg" alt="SkillRobust package-level auditing pipeline" width="920">
+</p>
+
 ## Paper Overview
 
 The paper introduces:
@@ -23,6 +27,10 @@ The method is designed around four recurring failure modes:
 - Rewrite instability, where semantic-preserving rewrites change the predicted label.
 
 SkillRobust addresses these issues with structured evidence extraction, optional semantic verification, conflict-aware aggregation, and robust final consolidation.
+
+<p align="center">
+  <img src="docs/assets/main_results_overview.svg" alt="Large-suite result overview" width="920">
+</p>
 
 ## What This Repository Contains
 
