@@ -1,6 +1,9 @@
 # SkillRobust
 
-Code release for **SkillRobust**, a package-level robust auditing framework for untrusted Agent Skill packages.
+[![arXiv](https://img.shields.io/badge/arXiv-2604.25109-b31b1b.svg)](https://arxiv.org/abs/2604.25109)
+
+Code release for **SkillRobust**, the implementation accompanying the arXiv paper
+[*Structured Security Auditing and Robustness Enhancement for Untrusted Agent Skills*](https://arxiv.org/abs/2604.25109).
 
 Modern agent systems increasingly load reusable "skills" before execution. A skill is not just a prompt: it can contain `SKILL.md`, scripts, reference documents, templates, and repository context. This makes pre-load safety auditing a package-level decision problem. A flat guardrail can miss cross-file evidence, or collapse malicious behavior into a weaker suspicious label after semantic rewrites.
 
@@ -12,7 +15,7 @@ SkillRobust studies this problem and provides a reusable implementation of a sta
 
 ## Paper Overview
 
-The paper introduces:
+The paper, [**Structured Security Auditing and Robustness Enhancement for Untrusted Agent Skills**](https://arxiv.org/abs/2604.25109), introduces:
 
 - **Skill package auditing** as a cross-file, pre-load security review problem for agent skills.
 - **SkillGuard-Bench**, a benchmark of benign, suspicious, malicious, and rewrite-stressed skill packages.
@@ -120,13 +123,16 @@ Risk and rewrite samples used with this project may contain simulated or reconst
 If you use this code, benchmark, or paper in your research, please cite:
 
 ```bibtex
-@article{li2026skillrobust,
-  title        = {SkillRobust: Robust Pre-Load Auditing of Untrusted Agent Skill Packages},
-  author       = {Li, Lijia and Others},
-  journal      = {arXiv preprint},
-  year         = {2026},
-  note         = {arXiv identifier pending}
+@misc{lv2026structuredsecurityauditing,
+  title         = {Structured Security Auditing and Robustness Enhancement for Untrusted Agent Skills},
+  author        = {Lv, Lijia and Tang, Xuehai and Wen, Jie and Han, Jizhong and Hu, Songlin},
+  year          = {2026},
+  eprint        = {2604.25109},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  doi           = {10.48550/arXiv.2604.25109},
+  url           = {https://arxiv.org/abs/2604.25109}
 }
 ```
 
-The arXiv identifier will be updated after the paper passes moderation.
+Paper links: [abstract](https://arxiv.org/abs/2604.25109), [PDF](https://arxiv.org/pdf/2604.25109), [DOI](https://doi.org/10.48550/arXiv.2604.25109).
