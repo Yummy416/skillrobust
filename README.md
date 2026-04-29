@@ -134,5 +134,3 @@ If you use this code, benchmark, or paper in your research, please cite:
   url           = {https://arxiv.org/abs/2604.25109}
 }
 ```
-
-Paper links: [abstract](https://arxiv.org/abs/2604.25109), [PDF](https://arxiv.org/pdf/2604.25109), [DOI](https://doi.org/10.48550/arXiv.2604.25109).
